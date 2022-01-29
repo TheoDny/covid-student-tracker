@@ -1,0 +1,95 @@
+input::placeholder {
+	color: #abb2c0;
+}
+.form__field {
+	margin-bottom: 1rem;
+}
+.form input {
+	outline: 0;
+	padding: 0.5rem 1rem;
+}
+.form input[type="email"],
+.form input[type="password"] {
+	width: 100%;
+}
+.grid {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #c0c6d1;
+	height: 80%;
+	width: 100%;
+}
+h2 {
+	font-size: 2.75rem;
+	font-weight: 100;
+	margin: 0 0 1rem;
+	text-transform: uppercase;
+}
+
+.container_auth {
+	box-shadow: 0 0 250px #000;
+	text-align: center;
+	width: 95vw;
+	max-width: 375px;
+	min-width: 250px;
+	padding: 1rem 1.5rem;
+	border-radius: 10px;
+	color: white;
+}
+.container_auth input {
+	border: 1px solid #242c37;
+	border-radius: 1000px;
+	background-color: rgb(61, 73, 90);
+	text-align: center;
+}
+
+.container_auth input[type="submit"] {
+	background: linear-gradient(160deg, royalblue 0%, rgb(33, 65, 161) 100%);
+	transition: background 0.5s ease-out;
+	color: white;
+	width: 100%;
+}
+
+.container_auth input[type="submit"]:hover {
+	background-position: top 41px right -1px;
+}
+
+.butt {
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	background-image: linear-gradient(
+		160deg,
+		royalblue 0%,
+		rgb(33, 65, 161) 100%
+	);
+	border: 1px solid #242c37;
+	border-radius: 1000px;
+	text-align: center;
+
+	width: 100%;
+	outline: 0;
+	padding: 0.5rem 1rem;
+}
+.butt a {
+	color: white;
+}
+
+.containButt a:hover {
+	color: rgb(154, 160, 166);
+}
+
+.butt:hover {
+	background-position: top 40px right -1px;
+}
+
+.butt:first-child {
+	margin-bottom: 2rem;
+	background-image: linear-gradient(
+		160deg,
+		rgb(33, 65, 161) 0%,
+		royalblue 100%
+	);
+}

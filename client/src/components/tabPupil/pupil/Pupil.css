@@ -1,0 +1,20 @@
+tr:nth-child(odd) td {
+	background-color: var(--bs-table-striped-bg);
+}
+
+tr td.danger {
+	background-color: var(--danger-color);
+}
+
+tr td.warning {
+	background-color: var(--warning-color);
+}
+
+td.number {
+	width: 1rem;
+}
+td.positive,
+td.contact {
+	width: 3rem;
+	text-align: center;
+}

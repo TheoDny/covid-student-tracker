@@ -1,0 +1,36 @@
+#tabPupil {
+	display: flex;
+	flex-direction: column;
+}
+
+table {
+	--danger-color: firebrick;
+	--warning-color: rgb(192, 112, 29);
+	text-align: end;
+	min-width: 620px;
+	position: relative;
+	left: 0px;
+}
+
+#tab {
+	overflow-x: auto;
+}
+
+#modalAddPupil {
+	background: linear-gradient(160deg, royalblue 0%, rgb(33, 65, 161) 100%);
+	transition: background 0.5s ease-out;
+	color: #fff;
+	min-width: 50%;
+	border: 1px solid #242c37;
+	border-radius: 1000px;
+}
+
+#modalAddPupil:hover {
+	background-position: top 41px right -1px;
+}
+
+#divButModal {
+	display: flex;
+	position: relative;
+	justify-content: center;
+}

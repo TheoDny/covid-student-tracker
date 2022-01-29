@@ -1,0 +1,28 @@
+.modal-content input {
+	background-color: var(--bs-body-bg);
+	color: white;
+}
+.modal-content input::placeholder {
+	color: silver;
+	font-style: italic;
+}
+.modal-content input:focus {
+	background-color: var(--bs-body-bg);
+	color: white;
+}
+
+div.modal-content {
+	border: none;
+}
+
+.modal-content input[type="checkbox"] {
+	zoom: 2;
+	transform: translate(15px, -6px);
+}
+.modal-content .form-check label {
+	margin-left: 25px;
+}
+.modal-content button.btn-danger {
+	position: absolute;
+	left: 1rem;
+}
