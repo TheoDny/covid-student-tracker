@@ -6,7 +6,6 @@ const bodyParser = require("body-parser")
 const authguard = require("./middleware/authguard")
 
 require("dotenv").config()
-
 const PORT = process.env.PORT || 3001
 const SECRET_URL_MDB =
 	process.env.SECRET_URL_MDB || require("./.secret.js").SECRET_URL_MDB

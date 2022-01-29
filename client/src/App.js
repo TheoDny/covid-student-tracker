@@ -9,7 +9,7 @@ import SignUpForm from "./components/auth/SignUpForm"
 import "bootstrap/dist/css/bootstrap.min.css"
 import axios from "axios"
 
-const API_ROOT = process.env.API_ROOT || require("./const").API_ROOT
+const API_ROOT = process.env.REACT_APP_API_ROOT || require("./const").API_ROOT
 class App extends Component {
 	state = {
 		isAuth: false,

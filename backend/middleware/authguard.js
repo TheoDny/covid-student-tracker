@@ -7,7 +7,6 @@ module.exports = (req, res, next) => {
 		if (req.headers.authorization === undefined)
 			throw new Error("Authguard Unauthorized")
 		const token = req.headers.authorization.split(" ")[1]
-		console.log()
 		const decodedToken = jwt.verify(token, SECRET_TOKEN)
 		const userId = decodedToken.userId
 
