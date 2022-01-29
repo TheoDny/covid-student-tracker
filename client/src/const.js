@@ -1,1 +1,1 @@
-exports.API_ROOT = "http://localhost:3001"
+exports.API_ROOT = "https://class-covid-monitoring.herokuapp.com"
