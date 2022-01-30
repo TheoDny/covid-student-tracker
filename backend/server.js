@@ -47,7 +47,7 @@ if (process.env.NODE_ENV === "production") {
 
 // ============== Post ============== //
 
-app.post("/api/auth/signup", userController.signup)
+// app.post("/api/auth/signup", userController.signup) no need for that
 app.post("/api/auth/login", userController.login)
 
 app.post("/api/pupils/add", authguard, controllerPupilsDb.addPupil)
