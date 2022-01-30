@@ -30,15 +30,32 @@ h2 {
 }
 
 .container_auth {
-	box-shadow: 0 0 250px #000;
+	box-shadow: 0 0 300px #000;
 	text-align: center;
-	width: 95vw;
-	max-width: 375px;
-	min-width: 250px;
 	padding: 1rem 1.5rem;
 	border-radius: 10px;
 	color: white;
 }
+
+.container_auth,
+#alert_danger {
+	max-width: 375px;
+	min-width: 250px;
+	width: 95vw;
+	margin-bottom: 1rem;
+}
+
+#alert_danger {
+	opacity: 0;
+	transition: opacity 0.3s;
+	position: relative;
+	bottom: 0px;
+}
+
+#alert_danger.display {
+	opacity: 100;
+}
+
 .container_auth input {
 	border: 1px solid #242c37;
 	border-radius: 1000px;
