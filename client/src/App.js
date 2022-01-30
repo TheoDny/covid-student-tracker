@@ -26,7 +26,6 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		console.log(process.env)
 		let accessToken = this.getAccessToken()
 
 		let isAuth = accessToken ? true : false

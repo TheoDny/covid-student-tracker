@@ -7,10 +7,11 @@ class Authentification extends Component {
 			<div className="grid align__item">
 				<div className="container_auth">
 					<div className="containButt">
-						<div className="butt">
+						{/* no need for that
+						<div className="butt" >
 							<Link to="/auth/signup">Créer un compte</Link>
 						</div>
-
+						*/}
 						<div className="butt">
 							<Link to="/auth/login">Se connecter</Link>
 						</div>
