@@ -34,13 +34,17 @@ class App extends Component {
 
 	/**
 	 *	Send an axios request to be authenticated and receive
-	 *	an accessToken that will be put in a cookie and set state
+	 *	an accessToken that will be put in a cookie and set state.
+	 *  Return a string, representing the error or "nothing"
 	 *
 	 * @param { {email: string, password: string} } user
+	 *
+	 * @return {string}
 	 */
-	handleLogin(user) {
+	async handleLogin(user) {
 		let token = this.state.accessToken
-		axios
+		let message = "nothing"
+		await axios
 			.post(API_ROOT + "/api/auth/login", user, {
 				headers: { Authorization: `Bearer ${token}` },
 			})
@@ -50,7 +54,11 @@ class App extends Component {
 				this.setState({ accessToken, isAuth: true })
 				console.info("login")
 			})
-			.catch((error) => console.error(error))
+			.catch((error) => {
+				console.error(error)
+				message = `${error.response.statusText} : ${error.response.data.error}`
+			})
+		return message
 	}
 
 	/**

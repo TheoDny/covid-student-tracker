@@ -1,15 +1,23 @@
 import { Component } from "react"
+import Alert from "react-bootstrap/Alert"
 import "./auth.css"
 
 class LoginForm extends Component {
 	state = {
 		password: "",
 		email: "",
+		message: "nothing",
+		showAlert: false,
 	}
 
 	handleLogin(event) {
 		event.preventDefault()
-		this.props.onLogin(this.state)
+		this.props.onLogin(this.state).then((message) => {
+			if (message !== "nothing") {
+				this.setState({ message })
+				this.setState({ showAlert: true })
+			}
+		})
 	}
 
 	handleChangePassword(event) {
@@ -50,6 +58,13 @@ class LoginForm extends Component {
 						</div>
 					</form>
 				</div>
+				<Alert
+					id="alert_danger"
+					className={this.state.showAlert ? "display" : ""}
+					variant="danger"
+				>
+					{this.state.message}
+				</Alert>
 			</div>
 		)
 	}
