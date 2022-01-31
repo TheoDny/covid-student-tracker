@@ -4,10 +4,8 @@
 }
 
 table {
-	--danger-color: firebrick;
-	--warning-color: rgb(192, 112, 29);
 	text-align: end;
-	min-width: 620px;
+	min-width: 700px;
 	position: relative;
 	left: 0px;
 }
@@ -16,21 +14,31 @@ table {
 	overflow-x: auto;
 }
 
-#modalAddPupil {
+#modalAddPupil,
+#modalModifList {
 	background: linear-gradient(160deg, royalblue 0%, rgb(33, 65, 161) 100%);
 	transition: background 0.5s ease-out;
 	color: #fff;
-	min-width: 50%;
+	min-width: 40%;
 	border: 1px solid #242c37;
 	border-radius: 1000px;
 }
 
-#modalAddPupil:hover {
-	background-position: top 41px right -1px;
+#modalAddPupil:hover,
+#modalModifList:hover {
+	background-position: top 38px right -1px;
 }
 
 #divButModal {
 	display: flex;
 	position: relative;
 	justify-content: center;
+}
+
+#modalModifList {
+	background: linear-gradient(
+		160deg,
+		var(--warning-color) 0%,
+		rgb(158, 82, 1) 100%
+	);
 }
