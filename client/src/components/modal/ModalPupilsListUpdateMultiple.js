@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form"
 import ToggleButton from "react-bootstrap/ToggleButton"
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup"
 import { Component } from "react"
+import { confirm } from "react-bootstrap-confirmation"
 import "./modalDark.css"
 import "./modalPupilsListUpdateMultiple.css"
 
@@ -44,7 +45,7 @@ class ModalPupilsListUpdateMultiple extends Component {
 	 */
 	updatePupils(event) {
 		event.preventDefault()
-
+		let atLeastOnePositive = false
 		let allUpdate = []
 		this.state.c_p.forEach((c_p) => {
 			if (c_p.state === "contact") {
@@ -56,6 +57,7 @@ class ModalPupilsListUpdateMultiple extends Component {
 					contactDate: this.date,
 				})
 			} else if (c_p.state === "positive") {
+				atLeastOnePositive = true
 				allUpdate.push({
 					_id: c_p._id,
 					positive: true,
@@ -65,9 +67,25 @@ class ModalPupilsListUpdateMultiple extends Component {
 				})
 			}
 		})
-		this.props.handleUpdatePupilsList(allUpdate)
-		this.props.onHide()
-		this.setState({ c_p: this.getDefaultC_p() })
+		if (atLeastOnePositive) {
+			this.props.handleUpdatePupilsList(allUpdate)
+			this.props.onHide()
+			this.setState({ c_p: this.getDefaultC_p() })
+		} else {
+			this.confirmWithoutPositive(allUpdate)
+		}
+	}
+
+	async confirmWithoutPositive(allUpdate) {
+		if (
+			await confirm(
+				"Aucun élève de la liste n'est cocher Positif, êtes vous sûre ?"
+			)
+		) {
+			this.props.handleUpdatePupilsList(allUpdate)
+			this.setState({ c_p: this.getDefaultC_p() })
+			this.props.onHide()
+		}
 	}
 
 	render() {
