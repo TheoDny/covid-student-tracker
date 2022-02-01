@@ -1,11 +1,12 @@
 import { Component } from "react"
+import axios from "axios"
 import Table from "react-bootstrap/Table"
 import Button from "react-bootstrap/Button"
-import "./tabPupil.css"
 import Pupil from "./pupil/Pupil"
 import ModalFormNewPupil from "../modal/ModalFormNewPupil"
 import ModalPupilListUpdateMultiple from "../modal/ModalPupilsListUpdateMultiple"
-import axios from "axios"
+import "./tabPupil.css"
+import download_csv from "../../img/download_csv.png"
 
 const API_ROOT = process.env.API_ROOT || require("../../const").API_ROOT
 
@@ -136,6 +137,54 @@ class TabPupil extends Component {
 			})
 			.catch((error) => console.error(error))
 	}
+	/* thank to " Calumah " for that one */
+	download_table_as_csv(separator = ",") {
+		let table_id = "tablePupils"
+		// Select rows from table_id
+		var rows = document.querySelectorAll("table#" + table_id + " tr")
+		// Construct csv
+		var csv = []
+		for (var i = 0; i < rows.length; i++) {
+			var row = [],
+				columns = rows[i].querySelectorAll("td, th")
+			// handle colspan number
+			let cols = []
+			columns.forEach((col, j) => {
+				let colsp = col.colSpan
+				cols.push(col)
+				for (let c = 1; c < colsp; c++) {
+					let blank = { innerText: "" }
+					cols.push(blank)
+				}
+			})
+			for (var j = 0; j < cols.length; j++) {
+				// Clean innertext to remove multiple spaces and jumpline (break csv)
+				var data = cols[j].innerText
+					.replace(/(\r\n|\n|\r)/gm, "")
+					.replace(/(\s\s)/gm, " ")
+				// Escape double-quote with double-double-quote (see https://stackoverflow.com/questions/17808511/properly-escape-a-double-quote-in-csv)
+				data = data.replace(/"/g, '""')
+				// Push escaped string
+				row.push('"' + data + '"')
+			}
+			csv.push(row.join(separator))
+		}
+		var csv_string = csv.join("\n")
+		// Download it
+		var filename =
+			"Classe_Nathalie_Maillard_" + new Date().toLocaleDateString() + ".csv"
+		var link = document.createElement("a")
+		link.style.display = "none"
+		link.setAttribute("target", "_blank")
+		link.setAttribute(
+			"href",
+			"data:text/csv;charset=utf-8," + encodeURIComponent(csv_string)
+		)
+		link.setAttribute("download", filename)
+		document.body.appendChild(link)
+		link.click()
+		document.body.removeChild(link)
+	}
 
 	/*
 	not sure to be implemented
@@ -161,7 +210,7 @@ class TabPupil extends Component {
 			<>
 				<div id="tabPupil">
 					<div id="tab">
-						<Table className="table-dark table-bordered">
+						<Table id="tablePupils" className="table-dark table-bordered">
 							<thead>
 								<tr>
 									<th className="number" colSpan="1"></th>
@@ -224,6 +273,15 @@ class TabPupil extends Component {
 						>
 							Ajoutez un élève
 						</Button>
+					</div>
+					<div className="d-flex justify-content-center">
+						<img
+							id="downloadcsv"
+							className="mb-2"
+							src={download_csv}
+							alt="download csv"
+							onClick={() => this.download_table_as_csv()}
+						/>
 					</div>
 				</div>
 				{this.state.modalFormPupilsListShow && (

@@ -46,3 +46,11 @@ table {
 td.name {
 	text-transform: uppercase;
 }
+
+#downloadcsv {
+	width: 8vh;
+	max-width: 75px;
+}
+#downloadcsv:hover {
+	cursor: pointer;
+}
