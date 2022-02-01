@@ -59,7 +59,7 @@ class ModalPupilsListUpdateMultiple extends Component {
 					_id: c_p._id,
 					positive: true,
 					positiveDate: this.date,
-					contactDate: false,
+					contact: false,
 					contactDateDate: "",
 				})
 			}

@@ -75,7 +75,7 @@ exports.deleteOnePupil = (req, res) => {
 exports.updateOnePupil = (req, res) => {
 	let id = req.body._id
 	req.body._id = undefined
-	Pupil.findByIdAndUpdate(id, req.body, (err, pupil) => {
+	Pupil.findByIdAndUpdate(id, req.body, { new: true }, (err, pupil) => {
 		if (err) {
 			console.error(err)
 			return
@@ -84,4 +84,36 @@ exports.updateOnePupil = (req, res) => {
 			res.send(pupil)
 		}
 	})
+}
+
+/**
+ *	update a Pupil to DB
+ *
+ * @param { {body : [ {_id : string , any : any } ] }} req
+ * @param res
+ */
+exports.updateManyPupils = async (req, res) => {
+	let id
+	const arrayPromise = req.body.map((pupil) => {
+		return new Promise((resolve, reject) => {
+			id = pupil._id
+			pupil._id = undefined
+
+			Pupil.findByIdAndUpdate(id, pupil, { new: true }, (err, pupil) => {
+				if (err) {
+					console.error(err)
+					reject(err)
+					return
+				} else {
+					console.info("Pupil : ", pupil.name, pupil.surname, " updated in DB")
+					resolve(pupil)
+				}
+			})
+		})
+	})
+	Promise.all(arrayPromise)
+		.then((updatedPupils) => {
+			res.send(updatedPupils)
+		})
+		.catch((error) => res.sendStatus(500).json({ error }))
 }

@@ -72,7 +72,7 @@ class Pupil extends Component {
 		return (
 			<>
 				<tr onClick={() => this.setState({ modalModifPupilShow: true })}>
-					<td className="number">{this.props.number}</td>
+					<td className="number">{this.props.number + 1}</td>
 					<td className="surname">{this.props.surname}</td>
 					<td className="name">{this.props.name}</td>
 

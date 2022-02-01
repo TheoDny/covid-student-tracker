@@ -72,6 +72,7 @@ class TabPupil extends Component {
 				newPupils.push(res.data)
 				this.setState({ pupils: newPupils })
 			})
+			.catch((error) => console.error(error))
 	}
 
 	/**
@@ -88,11 +89,12 @@ class TabPupil extends Component {
 				headers: { Authorization: `Bearer ${this.props.accessToken}` },
 			})
 			.then((res) => {
-				// res => pupil before modif
 				let newPupils = this.state.pupils.slice()
 				let i = newPupils.findIndex((p) => p._id === pupil._id)
 				newPupils[i] = pupil
+				this.setState({ pupils: newPupils })
 			})
+			.catch((error) => console.error(error))
 	}
 
 	/**
@@ -108,7 +110,9 @@ class TabPupil extends Component {
 			while (i < len) {
 				if (this.state.pupils[i]._id === pupilUp._id) {
 					newPupils[i] = pupilUp
+					return
 				}
+				i++
 			}
 		})
 
@@ -128,8 +132,9 @@ class TabPupil extends Component {
 				headers: { Authorization: `Bearer ${this.props.accessToken}` },
 			})
 			.then((res) => {
-				this.findByIdAndUpdate(res.body)
+				this.replacePupilsInState(res.data)
 			})
+			.catch((error) => console.error(error))
 	}
 
 	/*
@@ -179,7 +184,7 @@ class TabPupil extends Component {
 									<Pupil
 										key={i}
 										todayTime={this.todayTime}
-										number={i + 1}
+										number={i}
 										surname={p.surname}
 										name={p.name}
 										positive={p.positive}
