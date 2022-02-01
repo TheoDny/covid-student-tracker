@@ -5,6 +5,7 @@ import ToggleButton from "react-bootstrap/ToggleButton"
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup"
 import { Component } from "react"
 import "./modalDark.css"
+import "./modalPupilsListUpdateMultiple.css"
 
 class ModalPupilsListUpdateMultiple extends Component {
 	date = new Date().toLocaleDateString("en-CA")
@@ -109,7 +110,7 @@ class ModalPupilsListUpdateMultiple extends Component {
 										<ToggleButtonGroup
 											type="radio"
 											name={"radio" + i}
-											className="mb-2"
+											className="mb-2 group-radio"
 											onChange={(v, e) => {
 												this.handleChangeRadios(i, v)
 											}}
@@ -120,9 +121,9 @@ class ModalPupilsListUpdateMultiple extends Component {
 													key={j}
 													id={`radio-${i}-${j}`}
 													type="radio"
-													variant="outline-primary"
+													variant="outline-secondary"
 													value={radio.value}
-													className="mx-2"
+													className={"mx-2 " + radio.value}
 												>
 													{radio.name}
 												</ToggleButton>
