@@ -42,3 +42,7 @@ table {
 		rgb(158, 82, 1) 100%
 	);
 }
+
+td.name {
+	text-transform: uppercase;
+}

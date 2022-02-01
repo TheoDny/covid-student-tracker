@@ -33,14 +33,9 @@ exports.addPupil = (req, res) => {
  * @param {*} res
  */
 exports.getPupils = (req, res) => {
-	Pupil.find((err, pupils) => {
-		if (err) {
-			console.error(err)
-			res.sendStatus(500).json({ err })
-		} else {
-			res.send(pupils)
-		}
-	})
+	Pupil.find()
+		.sort({ name: "asc" })
+		.then((pupils) => res.send(pupils))
 }
 
 /**
