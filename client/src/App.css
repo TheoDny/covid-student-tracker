@@ -4,7 +4,10 @@ body,
 .App {
 	height: 100%;
 }
-
+html {
+	--danger-color: firebrick;
+	--warning-color: rgb(192, 112, 29);
+}
 .App {
 	display: flex;
 	flex-direction: column;
@@ -15,8 +18,9 @@ body,
 	display: block;
 	width: 80%;
 	height: 100%;
+	transition: width 0.5s;
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 900px) {
 	#rooter {
 		width: 100%;
 	}

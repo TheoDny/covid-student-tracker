@@ -1,0 +1,34 @@
+/* radio -> positive*/
+#modifPupilList .group-radio label:nth-child(3n + 2) {
+	color: var(--danger-color);
+	border-color: var(--danger-color);
+}
+
+#modifPupilList .group-radio label:nth-child(3n + 2):hover {
+	color: #fff;
+	background-color: var(--danger-color);
+}
+
+#modifPupilList .btn-check:checked + .positive.btn-outline-secondary {
+	color: #fff;
+	background-color: var(--danger-color);
+}
+
+/* radio -> contact*/
+#modifPupilList .group-radio label:nth-child(3n + 1) {
+	color: var(--warning-color);
+	border-color: var(--warning-color);
+}
+#modifPupilList .group-radio label:nth-child(3n + 1):hover {
+	color: #fff;
+	background-color: var(--warning-color);
+}
+#modifPupilList .btn-check:checked + .contact.btn-outline-secondary {
+	color: #fff;
+	background-color: var(--warning-color);
+}
+
+/* global radio*/
+#modifPupilList .group-radio label {
+	font-weight: 600;
+}

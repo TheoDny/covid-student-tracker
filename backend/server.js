@@ -55,6 +55,11 @@ app.post("/api/pupils/add", authguard, controllerPupilsDb.addPupil)
 app.post("/api/pupils/deleteone", authguard, controllerPupilsDb.deleteOnePupil)
 
 app.post("/api/pupils/updateone", authguard, controllerPupilsDb.updateOnePupil)
+app.post(
+	"/api/pupils/updatemany",
+	authguard,
+	controllerPupilsDb.updateManyPupils
+)
 
 // ================================== //
 

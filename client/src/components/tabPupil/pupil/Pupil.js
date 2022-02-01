@@ -4,20 +4,28 @@ import "./Pupil.css"
 
 class Pupil extends Component {
 	state = { modalModifPupilShow: false }
-
+	positiveDays = ""
+	contactDays = ""
+	constructor(props) {
+		super(props)
+		this.resetDays()
+	}
 	// == get number of days after contact or positve == //
-	positiveDays = this.props.positive
-		? Math.round(
-				(this.props.todayTime - new Date(this.props.positiveDate).getTime()) /
-					(1000 * 3600 * 24)
-		  )
-		: ""
-	contactDays = this.props.contact
-		? Math.round(
-				(this.props.todayTime - new Date(this.props.contactDate).getTime()) /
-					(1000 * 3600 * 24)
-		  )
-		: ""
+
+	resetDays() {
+		this.positiveDays = this.props.positive
+			? Math.floor(
+					(this.props.todayTime - new Date(this.props.positiveDate).getTime()) /
+						(1000 * 3600 * 24)
+			  )
+			: ""
+		this.contactDays = this.props.contact
+			? Math.floor(
+					(this.props.todayTime - new Date(this.props.contactDate).getTime()) /
+						(1000 * 3600 * 24)
+			  )
+			: ""
+	}
 	// ====================== //
 
 	/*
@@ -72,7 +80,7 @@ class Pupil extends Component {
 		return (
 			<>
 				<tr onClick={() => this.setState({ modalModifPupilShow: true })}>
-					<td className="number">{this.props.number}</td>
+					<td className="number">{this.props.number + 1}</td>
 					<td className="surname">{this.props.surname}</td>
 					<td className="name">{this.props.name}</td>
 
